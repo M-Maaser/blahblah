@@ -10,7 +10,7 @@ import com.ctre.phoenix6.mechanisms.swerve.SwerveModuleConstants.SteerFeedbackTy
 import edu.wpi.first.math.util.Units;
 import frc.robot.CommandSwerveDrivetrain;
 
-public class TunerConstants {
+public class TunerConstants_version2024_01_15 {
     // Both sets of gains need to be tuned to your individual robot.
 
     // The steer motor uses any SwerveModule.SteerRequestType control request with the
@@ -89,7 +89,7 @@ public class TunerConstants {
     private static final int kFrontLeftDriveMotorId = 7;
     private static final int kFrontLeftSteerMotorId = 8;
     private static final int kFrontLeftEncoderId = 24;
-    private static final double kFrontLeftEncoderOffset = 0.06201171875;
+    private static final double kFrontLeftEncoderOffset = 0.058837890625;
 
     private static final double kFrontLeftXPosInches = 13.5;
     private static final double kFrontLeftYPosInches = 13.5;
@@ -98,7 +98,7 @@ public class TunerConstants {
     private static final int kFrontRightDriveMotorId = 1;
     private static final int kFrontRightSteerMotorId = 2;
     private static final int kFrontRightEncoderId = 21;
-    private static final double kFrontRightEncoderOffset = -0.12890625;
+    private static final double kFrontRightEncoderOffset = -0.1279296875;
 
     private static final double kFrontRightXPosInches = 13.5;
     private static final double kFrontRightYPosInches = -13.5;
@@ -107,7 +107,7 @@ public class TunerConstants {
     private static final int kBackLeftDriveMotorId = 5;
     private static final int kBackLeftSteerMotorId = 6;
     private static final int kBackLeftEncoderId = 23;
-    private static final double kBackLeftEncoderOffset = 0.338134765625;
+    private static final double kBackLeftEncoderOffset = 0.33740234375;
 
     private static final double kBackLeftXPosInches = -13.5;
     private static final double kBackLeftYPosInches = 13.5;
@@ -116,7 +116,7 @@ public class TunerConstants {
     private static final int kBackRightDriveMotorId = 3;
     private static final int kBackRightSteerMotorId = 4;
     private static final int kBackRightEncoderId = 22;
-    private static final double kBackRightEncoderOffset = -0.055419921875;
+    private static final double kBackRightEncoderOffset = -0.054443359375;
 
     private static final double kBackRightXPosInches = -13.5;
     private static final double kBackRightYPosInches = -13.5;
