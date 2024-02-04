@@ -4,10 +4,17 @@ import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
 import java.lang.Math;
 
-public class limeslight {
+public class limeslight extends SubsystemBase {
     NetworkTable limelightBack; // table for the limelight
+
+    @Override
+    public void periodic() {
+        ValidateTargetExistence();
+    }
 
     NetworkTableEntry tx; // Table for the x-coordinate
     NetworkTableEntry ty; // Table for the y-coordinate
@@ -94,7 +101,7 @@ public class limeslight {
         }
     }
 
-    public void checkTargget() {
+    public void ValidateTargetExistence() {
         if (checkTarget()) {
             System.out.println("EYES!EYES!EYES!EYES!EYES!EYES!EYES!EYES!EYES!EYES!EYES!EYES!EYES!EYES");
         } else {

@@ -15,9 +15,9 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 //import frc.robot.generated.TunerConstants;
-import frc.robot.limeslight;
 
 public class RobotContainer {
+  limeslight lime = new limeslight();
   private double MaxSpeed = 6; // 6 meters per second desired top speed
   private double MaxAngularRate = 1.5 * Math.PI; // 3/4 of a rotation per second max angular velocity
 
