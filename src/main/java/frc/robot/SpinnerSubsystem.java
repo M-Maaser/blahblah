@@ -29,7 +29,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.Constants.Arm;
 
-public class ArmExtensionSubsystem extends SubsystemBase implements IArmSubsystem {
+public class SpinnerSubsystem extends SubsystemBase implements IArmSubsystem {
 
     private TalonSRX m_motorController = new TalonSRX(55);
     
@@ -76,7 +76,7 @@ public class ArmExtensionSubsystem extends SubsystemBase implements IArmSubsyste
         m_motorController.setSensorPhase(true);//set to true for both PWM encoder and quad mag 
     
     }
-    public ArmExtensionSubsystem() 
+    public SpinnerSubsystem() 
     {
       Setup();
     }
@@ -84,24 +84,6 @@ public class ArmExtensionSubsystem extends SubsystemBase implements IArmSubsyste
         m_motorController.set(TalonSRXControlMode.Position, Arm.EXTENSION_POSITION_IN);    
     }
 
-limeslight limes = new limeslight(); 
-
-// Proof of concept. Spins the spinny thing (TalonSRX, bane of my existance) based on AprilTags.
-// Commented out because I don't need it running at this particular moment.
-// Keeping it because it's fun to mess with.
-   /* @Override
-    public void periodic() {
-        if(limes.checkTarget()){
-        if (limes.getID() == 1.0){
-            tenthPower();
-        }
-        if(limes.getID() == 2.0){
-            backQuarterPower();
-        }
-       } if(limes.checkTarget() == false) {
-        noPower();
-       }
-    }*/
     public void setArmMid() {
         m_motorController.set(TalonSRXControlMode.Position, 9500);
     }
@@ -145,6 +127,11 @@ limeslight limes = new limeslight();
 
     public void noPower(){
         m_motorController.set(TalonSRXControlMode.PercentOutput, 0.0);
+    }
+
+    public void goDistance(){
+        //use encoder??
+        m_motorController.set(TalonSRXControlMode.Position, 9000);
     }
     
 }

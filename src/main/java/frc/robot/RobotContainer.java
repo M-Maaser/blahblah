@@ -26,7 +26,7 @@ public class RobotContainer {
   // private final CommandSwerveDrivetrain drivetrain = TunerConstants.DriveTrain;
   // // My drivetrain
 
-private final ArmExtensionSubsystem srx = new ArmExtensionSubsystem();
+private final SpinnerSubsystem srx = new SpinnerSubsystem();
   
   private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
       .withDeadband(MaxSpeed * 0.1).withRotationalDeadband(MaxAngularRate * 0.1) // Add a 10% deadband
