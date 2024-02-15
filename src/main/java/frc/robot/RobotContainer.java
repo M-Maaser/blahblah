@@ -26,6 +26,8 @@ public class RobotContainer {
   // private final CommandSwerveDrivetrain drivetrain = TunerConstants.DriveTrain;
   // // My drivetrain
 
+private final ArmExtensionSubsystem srx = new ArmExtensionSubsystem();
+  
   private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
       .withDeadband(MaxSpeed * 0.1).withRotationalDeadband(MaxAngularRate * 0.1) // Add a 10% deadband
       .withDriveRequestType(DriveRequestType.OpenLoopVoltage); // I want field-centric
@@ -69,9 +71,5 @@ public class RobotContainer {
 
   public Command getAutonomousCommand() {
     return Commands.print("No autonomous command configured");
-  }
-
-  public Command forTheLoveOfGod() {
-    return Commands.print("jdf");
   }
 }

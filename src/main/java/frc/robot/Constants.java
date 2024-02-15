@@ -44,15 +44,15 @@ public final class Constants {
         /**The (estimated, cry abt it Michigan math) encoder reading at 360 degrees of rotation. Used ONLY for calculations, and if you get near this you did something sososososos<b>SO</b> wrong */
         public static final int ARM_ROT_360_TICKS = 458752;
         
-    public static final int ARM_RIGHT_ROT_MOTOR_ID = 9; // Connected to Falcon 500
+    // public static final int ARM_RIGHT_ROT_MOTOR_ID = 9; // Connected to Falcon 500
 
-    public static final int ARM_LEFT_ROT_MOTOR_ID = 10; // Connected to Falcon 500
-    public static final int ARM_EXTENDER_MOTOR_ID = 27; // Connected to SRX and Neo
+    // public static final int ARM_LEFT_ROT_MOTOR_ID = 10; // Connected to Falcon 500
+    // public static final int ARM_EXTENDER_MOTOR_ID = 27; // Connected to SRX and Neo
 
-    public static final int INTAKE_WHEELS_MOTOR_ID = 11; // Connected to Victor SPX
-        public static int STOW_WRIST_POS = 2000;
+    // public static final int INTAKE_WHEELS_MOTOR_ID = 11; // Connected to Victor SPX
+        // public static int STOW_WRIST_POS = 2000;
 
-        public static int LEVEL_WRIST_POS = 19000;
+        // public static int LEVEL_WRIST_POS = 19000;
     
         /* First attempt 11000
         * experimental range is probably between 9200 to 11200

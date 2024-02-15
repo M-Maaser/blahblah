@@ -4,9 +4,19 @@ import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
 import java.lang.Math;
 
-public class limeslight {
+import com.ctre.phoenix.motorcontrol.TalonSRXControlMode;
+
+public class limeslight extends SubsystemBase {
+
+
+    @Override
+    public void periodic() {
+       System.out.println(getBotPose());
+    }
     NetworkTable limelightBack; // table for the limelight
 
     NetworkTableEntry tx; // Table for the x-coordinate
@@ -15,6 +25,7 @@ public class limeslight {
     NetworkTableEntry ts; // Table for the skew/rotation of target
     NetworkTableEntry tv; // Table to see if there are valid targets
     NetworkTableEntry tl; /// Table for latency/delay before data transfer
+    NetworkTableEntry tid; // Table for the ID of target
 
     NetworkTableEntry tshort; // Table for short side length
     NetworkTableEntry tlong; // Table for long side length
@@ -24,9 +35,7 @@ public class limeslight {
     NetworkTableEntry camMode; // Table to set camera mode
     NetworkTableEntry pipeline; // Table to switch pipelines
     NetworkTableEntry solvePNP; // Table to give position in 3D space based on camera
-
-    boolean checkArea;
-    boolean checkSkew;
+    NetworkTableEntry botPose;
 
     public void DebugMethodSingle() {
         var tab = Shuffleboard.getTab("Driver Diagnostics");
@@ -43,6 +52,7 @@ public class limeslight {
         ts = limelightBack.getEntry("ts");
         tv = limelightBack.getEntry("tv");
         tl = limelightBack.getEntry("tl");
+        tid = limelightBack.getEntry("tid");
 
         tshort = limelightBack.getEntry("tshort");
         tlong = limelightBack.getEntry("tlong");
@@ -52,19 +62,15 @@ public class limeslight {
         camMode = limelightBack.getEntry("camMode");
         pipeline = limelightBack.getEntry("pipeline");
         solvePNP = limelightBack.getEntry("solvePNP");
+        botPose = limelightBack.getEntry("botpose");
 
     }
 
     // vison constants
-    double CAMERA_HEIGHT = 0.0; // placeholder value, fix once have robot
+    double CAMERA_HEIGHT = 18.9; //taz 1 on cart
     double APRIL_TAG_HEIGHT = 0.0; // placeholder, fix once have robot
     double MIN_AREA = 0.3; // place holder value, fix once have robot
 
-    // double HEIGHT_ANGLE =
-    // double DISTANCE = (APRIL_TAG_HEIGHT - CAMERA_HEIGHT)/Math.tan(getArea());
-    // (-37.057495484737 * getArea()) + 110.42331392686; //calculated in inches
-    // ESTIMATED
-    // variable does not factor in skew
     // to move, first look straight then move distance to go straight to april tag
     // need to modify later once given robot size
     public double getArea() {
@@ -75,6 +81,14 @@ public class limeslight {
 
     public double getSkew() {
         return ts.getDouble(0.0);
+    }
+
+    public double getID(){
+        return tid.getDouble(-1.0);
+    }
+
+    public double getBotPose(){
+        return botPose.getDouble(0.0);
     }
 
     public boolean checkArea() {
@@ -94,7 +108,9 @@ public class limeslight {
         }
     }
 
-    public void checkTargget() {
+    
+
+    public void proofOfTarget() {
         if (checkTarget()) {
             System.out.println("EYES!EYES!EYES!EYES!EYES!EYES!EYES!EYES!EYES!EYES!EYES!EYES!EYES!EYES");
         } else {
